@@ -2,12 +2,22 @@
   <section class="container">
     <div>
       <ul id="messages">
-        <li v-for="message in messages" v-bind:key="message">
+        <li
+          v-for="message in messages"
+          v-bind:key="message"
+        >
           {{ message }}
         </li>
       </ul>
       <form v-on:submit.prevent="submitForm">
-        <input type="text" v-model="text" id="msg" autocomplete="off" placeholder="Enter message" /><button class="submit-button">Send</button>
+        <input
+          type="text"
+          v-model="text"
+          id="msg"
+          autocomplete="off"
+          placeholder="Enter message"
+        />
+        <button class="submit-button">Send</button>
       </form>
     </div>
   </section>
@@ -38,8 +48,6 @@ export default {
 
       const messages = this.messages;
       socket.on("chat message", function(msg) {
-        console.log(msg);
-        console.log(messages);
         messages.push(msg);
       });
     },
